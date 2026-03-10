@@ -19,7 +19,7 @@ env:
   IMAGE_DOCKERHUB_LATEST: nishantr/easemytrip:latest
 
   IMAGE_ECR: 306989527369.dkr.ecr.ap-south-1.amazonaws.com/demodockerrepo1:${{ github.run_number }}
-  IMAGE_ECR_LATEST: 306989527369.dkr.ecr.ap-south-1.amazonaws.com/ demodockerrepo1:latest
+  IMAGE_ECR_LATEST: 306989527369.dkr.ecr.ap-south-1.amazonaws.com/demodockerrepo1:latest
 
 jobs:
 
