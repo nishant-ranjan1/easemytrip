@@ -19,7 +19,8 @@ env:
 jobs:
   build-test:
     name: Compile, Test & Package
-    runs-on: ubuntu-latest # Switched to GitHub-hosted runner
+    # MODIFIED: Changed from ubuntu-latest to self-hosted
+    runs-on: self-hosted
 
     steps:
       - name: Checkout Code
@@ -30,7 +31,9 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
-          cache: 'maven' # Built-in caching for GitHub runners
+          # Note: On self-hosted, Maven usually uses the local ~/.m2 directory
+          # which persists between runs automatically.
+          cache: 'maven'
 
       - name: Package Artifact
         run: mvn package -DskipTests
@@ -43,7 +46,8 @@ jobs:
 
   docker-build-scan-push:
     name: Docker Build, Scan & Push to ECR
-    runs-on: ubuntu-latest # Switched to GitHub-hosted runner
+    # MODIFIED: Changed from ubuntu-latest to self-hosted
+    runs-on: self-hosted
     needs: build-test
 
     steps:
